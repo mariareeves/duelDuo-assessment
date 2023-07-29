@@ -87,12 +87,13 @@ app.post("/api/duel", (req, res) => {
     });
 
     // comparing the total health to determine a winner
+    //fixed bug line 97, changed 'losses' to wins
     if (compHealth > playerHealth) {
       playerRecord.losses += 1;
       rollbar.info('Someone is losing')
       res.status(200).send("You lost!");
     } else {
-      playerRecord.losses += 1;
+      playerRecord.wins += 1;
       rollbar.info('Someone is winning')
       res.status(200).send("You won!");
     }
